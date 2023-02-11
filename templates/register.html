@@ -87,10 +87,10 @@
                 },
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        alert('회원가입이 완료되었습니다.')
+                        swal('회원가입이 완료되었습니다.')
                         window.location.href = '/login'
                     } else {
-                        alert(response['msg'])
+                        swal(response['msg'], error);
                         window.location.reload()
                     }
                 }
@@ -108,7 +108,7 @@
                         id_give: userId
                     },
                     success: function (response) {
-                        alert(response['msg'])
+                        swal(response['msg']);
                     }
                 })
             }else{
@@ -125,7 +125,7 @@
                     nick_give: $('#usernick').val()
                 },
                 success: function (response) {
-                    alert(response['msg'])
+                    swal(response['msg'])
                 }
             })
         }
@@ -141,7 +141,7 @@
                         email_give: userEmail
                     },
                     success: function (response) {
-                        alert(response['msg'])
+                        swal(response['msg'])
                     }
                 })
             }else{
