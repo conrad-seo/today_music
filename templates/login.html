@@ -42,7 +42,7 @@
             text-align: center;
         }
 
-        .login > form{
+        .login > div{
             margin-top: 20px;
         }
 
@@ -83,12 +83,12 @@
 <body>
 <div class="login">
     <h1>로그인</h1>
-    <form method="post">
+    <div>
         <input type="text" id="userid" name="u" placeholder="아이디를 입력하세요." required="required">
         <input type="password" id="userpw" name="p" placeholder="패스워드를 입력하세요." required="required">
         <button type="submit" onclick="login()" class="btn btn-light btn-large">로그인</button>
         <button type="submit" onclick="signUp()" class="btn btn-outline-light btn-large">회원가입</button>
-    </form>
+    </div>
 </div>
 </body>
 </html>
