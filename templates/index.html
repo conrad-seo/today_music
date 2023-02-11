@@ -4,80 +4,100 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- 부트스트랩 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-
-    <title>오노추</title>
-
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&family=Open+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <title>오노추</title>
 
     <style>
         * {
             font-family: 'Gowun Dodum', sans-serif;
         }
 
-        .header{
+        body > .header {
+            position: relative;
+            z-index: 1;
+        }
+
+        body > .mytitle {
+            position: relative;
+            /*z-index: 1;*/
+        }
+
+        /*body > .mypost {*/
+        /*    z-index: 0;*/
+        /*}*/
+        .header {
             width: 100%;
+            color: white;
         }
 
-        .header > div{
-            hegith: 50px;
-        }
-
-        .icon{
-            float: left;
-        }
-
-        .showUser{
+        .header > button {
             float: right;
-            width: 500px;
-            font-size: 20px;
-            text-align: right;
+            margin: 30px 60px 0 0;
+            color: white;
         }
 
-        .showUser > span{
+        .header > button:hover {
+            font-weight: bold;
+            color: grey;
+        }
+
+        .showUser > span {
             margin-right: 20px;
         }
 
         .mytitle {
+            top: -100px;
             width: 100%;
-            height: 500px;
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercave.com/dwp1x/wp5694376.jpg');
+            height: 600px;
+            margin-bottom: -100px;
+            /*background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercave.com/dwp1x/wp5694376.jpg');*/
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.musicpressasia.com/wp-content/uploads/2022/01/Lofi-Girl-Launched-2021-Best-Tracks.-Music-Press-Asia.jpg');
             background-position: center;
             background-size: cover;
-
             color: white;
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        .mytitle > button {
-            width: 200px;
-            height: 50px;
+        .mytitle > h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 150px;
+            font-weight: bold;
+            font-style: italic;
+        }
 
+        .mytitle > h5, .mytitle > .titleBtn {
+            margin-top: 40px;
+        }
+
+        .titleBtn > button {
+            width: 150px;
+            height: 50px;
             background-color: transparent;
             color: white;
-
             border-radius: 50px;
             border: 1px solid white;
-
-            margin-top: 10px;
+            margin: 10px 10px 0 0;
         }
 
         .mytitle > button:hover {
             border: 2px solid white;
-        }
-
-        .mycomment {
-            color: gray;
         }
 
         .mycards {
@@ -108,57 +128,95 @@
         .mybtns > button {
             margin-right: 10px;
         }
+
+        .card {
+            margin-top: 30px;
+        }
+
+        #showTitle {
+            float: left;
+        }
+
+        #showStar {
+            float: right;
+        }
+
+        #showComment {
+            clear: both;
+        }
     </style>
     <script>
         $(document).ready(function () {
+            loginChk();
             listing();
         });
 
-        function listing(message) {
-            $.ajax({
-                type: 'GET',
-                url: '/movie',
-                data: {},
-                success: function (response) {
-                    let rows = response['movies']
-                    for(let i = 0; i < rows.length; i++){
-                        let comment = rows[i]['comment']
-                        let title = rows[i]['title']
-                        let desc = rows[i]['desc']
-                        let image = rows[i]['image']
-                        let star = rows[i]['star']
+        function loginChk() {
+            let nickname = '{{nickname}}'
+            let user_html = ''
+            if( nickname === null ){
+                user_html = `<button type="button" class="btn btn-outline-white" onclick="logout()">로그아웃</button>`
+            }else{
+                user_html = `<button type="button" class="btn btn-outline-white" onclick="window.location.href ='/login'">로그인</button>`
+            }
+            $('#header').append(user_html)
+        }
 
+        function listing() {
+            $.ajax({
+                type: "POST",
+                url: "show_list",
+                data: {},
+                success: function (data) {
+                    console.log(data)
+                    for (let i = 0; i < data.length; i++) {
+                        let comment = data[i]['comment']
+                        let title = data[i]['title']
+                        let image = data[i]['image']
+                        let star = data[i]['star']
+                        let num = data[i]['num']
                         let star_image = '⭐'.repeat(star)
 
-                        let temp_html = `<div class="col">
-                                            <div class="card h-100">
-                                                <img src="${image}"
-                                                     class="card-img-top">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${title}</h5>
-                                                    <p class="card-text">${desc}</p>
-                                                    <p>${star_image}</p>
-                                                    <p class="mycomment">${comment}</p>
-                                                </div>
+                        let temp_html = ''
+                        temp_html = `<div class="col">
+                                        <div class="card">
+                                            <img src="${image}" class="card-img-top">
+                                            <div class="card-body">
+                                                <h5 class="card-title" onclick=getPost(${num}) id="showTitle">${title}</h5>
+                                                <p class="card-text" id="showStar">${star_image}</p>
+                                                <p class="card-text" id="showComment">${comment}</p>
                                             </div>
-                                        </div>`
+                                        </div>
+                                    </div>`
                         $('#cards-box').append(temp_html)
                     }
                 }
             })
         }
 
+        function getPost(num) {
+            $.ajax({
+                type: 'GET',
+                url: `/listget?num=${num}`,
+                success: function () {
+                    window.location.href = `/listget?num=${num}`
+
+                }
+            })
+        }
+
         function posting() {
+            let nickname = '{{nickname}}'
             let url = $('#url').val()
             let star = $('#star').val()
             let comment = $('#comment').val()
 
             $.ajax({
                 type: 'POST',
-                url: '/movie',
-                data: {url_give: url, star_give:star, comment_give:comment},
+                url: '/make_list',
+                data: {nick_give: nickname, url_give: url, star_give: star, comment_give: comment},
                 success: function (response) {
-                    alert(response['msg'])
+                    console.log(response['title'])
                     window.location.reload()
                 }
             });
@@ -171,25 +229,33 @@
         function close_box() {
             $('#post-box').hide()
         }
+
+        function logout() {
+            $.removeCookie('mytoken');
+            alert('로그아웃!')
+            window.location.href = '/login'
+        }
     </script>
 </head>
 
 <body>
-<div class="header">
-  <div class="icon" style="border: 1px solid red"><!-- 추후 아이콘 들어갈 자리 --></div>
-  <div class="showUser" style="border: 1px solid orange"><span>{id}님 환영합니다!</span></div>
-</div>
-<div class="mytitle">
-    <h1>오노추: 오늘의 노래 추천</h1>
-    <button onclick="open_box()">리스트 만들기</button>
+<div class="header" id="header">
+ </div>
+<div class="mytitle" id="mytitle">
+    <h1>Today's Playlist</h1>
+    <h5>항해99 팀원들이 추천한 노래들을 들어보세요!</h5>
+    <div class="titleBtn">
+        <button onclick="open_box()">노래 추천하기</button>
+    </div>
 </div>
 <div class="mypost" id="post-box">
+    <div class="backSqure"></div>
     <div class="form-floating mb-3">
         <input id="url" type="email" class="form-control" placeholder="name@example.com">
         <label>유튜브 URL</label>
     </div>
     <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01">별점</label>
+        <label class="input-group-text" for="star">별점</label>
         <select class="form-select" id="star">
             <option selected>-- 선택하기 --</option>
             <option value="1">⭐</option>
@@ -201,7 +267,7 @@
     </div>
     <div class="form-floating">
         <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-        <label for="floatingTextarea2">코멘트</label>
+        <label for="comment">코멘트</label>
     </div>
     <div class="mybtns">
         <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
@@ -209,16 +275,17 @@
     </div>
 </div>
 <div class="mycards">
-    <div class="row row-cols-1 row-cols-md-2 g-2" id="cards-box">
+    <div class="row row-cols-2" id="cards-box">
         <div class="col">
-            <div class="card mb-2">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><a href="detail.html">{유튜브 제목}</a></h5>
-                <p class="card-text">{별점}</p>
-                <p class="card-text"><small class="text-muted">{사용자 작성 코멘트}</small></p>
-              </div>
+            <div class="card">
+                <img src="${image}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" onclick=getPost(${num}) id="showTitle">${title}</h5>
+                    <p class="card-text" id="showStar">${star_image}</p>
+                    <p class="card-text" id="showComment">${comment}</p>
+                </div>
             </div>
+        </div>
     </div>
 </div>
 </body>
