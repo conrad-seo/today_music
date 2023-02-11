@@ -268,6 +268,7 @@ def list_post():
     db.list.insert_one(doc)
     return jsonify({'title': title})
 
+
 @app.route('/detail', methods=["POST"])
 def ho_comment():
         comment_receive = request.form['comment_give']
