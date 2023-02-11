@@ -157,6 +157,7 @@
                 url: '/make_list',
                 data: {url_give: url, star_give:star, comment_give:comment},
                 success: function (response) {
+                    alert(response['msg'])
                     console.log(response['title'])
                     window.location.reload()
                 }
