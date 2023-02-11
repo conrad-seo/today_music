@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+
+  <title>회원가입</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <style>
+      * {
+          font-family: 'Jua', sans-serif;
+      }
+
+      .mytitle {
+          background-color: black;
+          width: 100%;
+          height: 50px;
+
+          color: white;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .posting-box {
+          height: 400px;
+          width: 300px;
+          border-radius: 10px;
+          padding: 25px;
+          box-shadow: 0px 0px 10px 2px gray;
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+
+      .posting-box > h1 {
+          text-align: center;
+          font-size: 50px;
+      }
+
+      .posting-box > button {
+          width: 100px;
+          margin: 25px auto;
+          display: block;
+      }
+
+      .form-group {
+          margin: 10px 0;
+      }
+
+  </style>
+  <script>
+      // 간단한 회원가입 함수입니다.
+      // 아이디, 비밀번호, 닉네임을 받아 DB에 저장합니다.
+      function register() {
+          $.ajax({
+              type: "POST",
+              url: "/api/register",
+              data: {
+                  id_give: $('#userid').val(),
+                  pw_give: $('#userpw').val(),
+                  repw_give : $(#userpw).val(),
+                  nickname_give: $('#usernick').val(),
+                  email_give : $('#usernick').val()
+              },
+              success: function (response) {
+                  if (response['result'] == 'success') {
+                      alert('회원가입이 완료되었습니다.')
+                      window.location.href = '/login'
+                  } else {
+                      alert(response['msg'])
+                      window.location.reload()
+                  }
+              }
+          })
+      }
+
+      function check_id() {
+          $.ajax({
+              type: "POST",
+              url: "/register/check_id",
+              data: {
+                  id_give: $('#userid').val()
+              },
+              success: function (response) {
+                  alert(response['msg'])
+              }
+          })
+      }
+
+      function check_nick() {
+          $.ajax({
+              type: "POST",
+              url: "/register/check_nick",
+              data: {
+                  nick_give: $('#usernick').val()
+              },
+              success: function (response) {
+                  alert(response['msg'])
+              }
+          })
+      }
+
+  </script>
+</head>
+
+<body>
+<div class="mytitle">
+  <h1></h1>
+</div>
+<div class="posting-box" id="post-box">
+  <h1 class="display-4">회원가입</h1>
+  <div class="form-group">
+    <label>ID</label>
+    <button onclick="check_id()" type="button" class="btn btn-primary">중복 확인</button>
+    <input type="text" class="form-control" aria-describedby="emailHelp"
+           id="userid" placeholder="">
+  </div>
+  <div class="form-group">
+    <label>닉네임</label>
+    <button onclick="check_nick()" type="button" class="btn btn-primary">중복 확인</button>
+    <input type="text" class="form-control" aria-describedby="emailHelp"
+           id="usernick" placeholder="">
+  </div>
+  <div class="form-group">
+    <label>비밀번호</label>
+    <input type="password" class="form-control" aria-describedby="emailHelp"
+           id="userpw" placeholder="">
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" onclick="window.location.href ='/login'">뒤로가기</button>
+    <button type="submit" onclick="register()" class="btn btn-primary">회원가입</button>
+  </div>
+</div>
+</body>
+</html>
