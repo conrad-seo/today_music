@@ -18,24 +18,30 @@
         * {
             font-family: 'Gowun Dodum', sans-serif;
         }
-        .header{
+
+        .header {
             width: 100%;
         }
-        .header > div{
+
+        .header > div {
             hegith: 50px;
         }
-        .icon{
+
+        .icon {
             float: left;
         }
-        .showUser{
+
+        .showUser {
             float: right;
             width: 500px;
             font-size: 20px;
             text-align: right;
         }
-        .showUser > span{
+
+        .showUser > span {
             margin-right: 20px;
         }
+
         .mytitle {
             width: 100%;
             height: 300px;
@@ -48,6 +54,7 @@
             align-items: center;
             justify-content: center;
         }
+
         .mytitle > button {
             width: 200px;
             height: 50px;
@@ -57,26 +64,53 @@
             border: 1px solid white;
             margin-top: 10px;
         }
+
         .listDetail {
+            width: 95%;
+            display: flex;
             margin: auto;
             padding: 50px 50px;
-            width: 95%;
-            height: 400px;
             max-width: 1200px;
         }
-        .listDetail > section {
+
+        .linkInfo {
+            width: 400px;
             float: left;
         }
-        .detailImg{
+
+        .detailImg {
             width: 400px;
             height: 250px;
         }
+
         .detailInfo {
-            margin-left: 50px;
+            margin-top: 20px;
             height: 250px;
         }
-        .detailInfo > span {
-            display: block;
+
+        .detailInfo > .writerId {
+            float: left;
+        }
+
+        .detailInfo > .star {
+            float: right;
+        }
+
+        .detailInfo > hr {
+            clear: both;
+        }
+
+        .replyInfo {
+            width: 650px;
+            margin-left: 50px;
+        }
+
+        .replyInfo .form-control {
+            height: 50px;
+        }
+
+        .readReply > .card {
+            margin-bottom: 10px;
         }
     </style>
     <script>
@@ -84,25 +118,58 @@
 </head>
 <body>
 <div class="header">
-    <div class="icon" style="border: 1px solid red"><!-- 추후 아이콘 들어갈 자리 --></div>
-    <div class="showUser" style="border: 1px solid orange"><span>{id}님 환영합니다!</span></div>
+    <div class="icon"><!-- 추후 아이콘 들어갈 자리 --></div>
+    <div class="showUser"><span>{id}님 환영합니다!</span></div>
 </div>
 <div class="mytitle">
     <h1>오노추: 오늘의 노래 추천</h1>
     <button onClick="location.href='index.html'">이전 페이지</button>
 </div>
-<div class="listDetail" style="border: 1px solid orange">
-    <section class="detailImg" style="border: 1px solid red">
-        <img src="..." class="thumbnail" alt="...">
-    </section>
-    <section class="detailInfo" style="border: 1px solid black">
-        <span><h1>플레이리스트 제목</h1></span>
-        <hr />
-        <span><h5>작성자 id</h5></span>
-        <span><h5>별점</h5></span>
-        <hr />
-        <span><h6>코멘트</h6></span>
-    </section>
+<div class="listDetail">
+    <div class="linkInfo">
+        <section class="detailImg">
+            <img src="#" class="thumbnail" alt="">
+        </section>
+        <section class="detailInfo">
+            <span><h1>플레이리스트 제목</h1></span>
+            <hr/>
+            <span class="writerId"><h5>작성자 id</h5></span>
+            <span class="star"><h5>별점</h5></span>
+            <hr/>
+            <span><h6>코멘트</h6></span>
+        </section>
+    </div>
+    <div class="replyInfo">
+        <section class="insertReply">
+            <div class="mb-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="이 플레이리스트에 대해 코멘트를 남겨주세요🎵">
+                    <button class="btn btn-outline-secondary" id="writeReply">등록하기</button>
+                </div>
+            </div>
+            <hr/>
+        </section>
+        <section class="readReply">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">닉네임</h5>
+                    <p class="card-text">코멘트</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">닉네임</h5>
+                    <p class="card-text">코멘트</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">닉네임</h5>
+                    <p class="card-text">코멘트</p>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
 </body>
 </html>
