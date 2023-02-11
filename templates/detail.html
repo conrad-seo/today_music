@@ -1,265 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- 부트스트랩 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- 부트스트랩 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!--    css부트스크랩-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-    <!--    jquery쿠키-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <!-- 폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    <title>오노추</title>
-    ----------------------
-    <iframe width="717" height="538" src="https://www.youtube.com/embed/xgvckGs6xhU" title="[MV] KIM DONG RYUL(김동률) _ Departure(출발)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <iframe width="956" height="538" src="https://www.youtube.com/embed/6LDg0YGYVw4" title="[MV] 가호 - '시작' ＜이태원 클라쓰(Itaewon class)＞ OST Part.2♪" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <!--    css부트스크랩-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+  <!--    jquery쿠키-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <!-- 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <title>오노추</title>
+<!--  <iframe width="717" height="538" src="https://www.youtube.com/embed/xgvckGs6xhU"-->
+<!--          title="[MV] KIM DONG RYUL(김동률) _ Departure(출발)" frameborder="0"-->
+<!--          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+<!--          allowfullscreen></iframe>-->
+<!--  <iframe width="956" height="538" src="https://www.youtube.com/embed/6LDg0YGYVw4"-->
+<!--          title="[MV] 가호 - '시작' ＜이태원 클라쓰(Itaewon class)＞ OST Part.2♪" frameborder="0"-->
+<!--          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+<!--          allowfullscreen></iframe>-->
 
 
+  <style>
+      * {
+          font-family: 'Gowun Dodum', sans-serif;
+      }
 
-    <style>
-        * {
-            font-family: 'Gowun Dodum', sans-serif;
-        }
+      .header {
+          width: 100%;
+      }
 
-        .header {
-            width: 100%;
-        }
+      .header > div {
+          hegith: 50px;
+      }
 
-        .header > div {
-            hegith: 50px;
-        }
+      .icon {
+          float: left;
+      }
 
-        .icon {
-            float: left;
-        }
+      .showUser {
+          float: right;
+          width: 500px;
+          font-size: 20px;
+          text-align: right;
+      }
 
-        .showUser {
-            float: right;
-            width: 500px;
-            font-size: 20px;
-            text-align: right;
-        }
+      .showUser > span {
+          margin-right: 20px;
+      }
 
-        .showUser > span {
-            margin-right: 20px;
-        }
+      .mytitle {
+          width: 100%;
+          height: 300px;
+          background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercave.com/dwp1x/wp5694376.jpg');
+          background-position: center;
+          background-size: cover;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
 
-        .mytitle {
-            width: 100%;
-            height: 300px;
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercave.com/dwp1x/wp5694376.jpg');
-            background-position: center;
-            background-size: cover;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+      .mytitle > button {
+          width: 200px;
+          height: 50px;
+          background-color: transparent;
+          color: white;
+          border-radius: 50px;
+          border: 1px solid white;
+          margin-top: 10px;
+      }
 
-        .mytitle > button {
-            width: 200px;
-            height: 50px;
-            background-color: transparent;
-            color: white;
-            border-radius: 50px;
-            border: 1px solid white;
-            margin-top: 10px;
-        }
+      .listDetail {
+          width: 95%;
+          display: flex;
+          margin: auto;
+          padding: 50px 50px;
+          max-width: 1200px;
+      }
 
-        .listDetail {
-            width: 95%;
-            display: flex;
-            margin: auto;
-            padding: 50px 50px;
-            max-width: 1200px;
-        }
+      .linkInfo {
+          width: 400px;
+          float: left;
+      }
 
-        .linkInfo {
-            width: 400px;
-            float: left;
-        }
+      .detailImg {
+          width: 400px;
+          height: 250px;
+      }
 
-        .detailImg {
-            width: 400px;
-            height: 250px;
-        }
+      .detailInfo {
+          margin-top: 20px;
+          height: 250px;
+      }
 
-        .detailInfo {
-            margin-top: 20px;
-            height: 250px;
-        }
+      .detailInfo > .writerId {
+          float: left;
+      }
 
-        .detailInfo > .writerId {
-            float: left;
-        }
+      .detailInfo > .star {
+          float: right;
+      }
 
-        .detailInfo > .star {
-            float: right;
-        }
+      .detailInfo > hr {
+          clear: both;
+      }
 
-        .detailInfo > hr {
-            clear: both;
-        }
+      .replyInfo {
+          width: 650px;
+          margin-left: 50px;
+      }
 
-        .replyInfo {
-            width: 650px;
-            margin-left: 50px;
-        }
+      .replyInfo .form-control {
+          height: 50px;
+      }
 
-        .replyInfo .form-control {
-            height: 50px;
-        }
+      .readReply > .card {
+          margin-bottom: 10px;
+      }
+  </style>
+  <script>
+      // let url_num = document.location.href.split("/")[4];
 
-        .readReply > .card {
-            margin-bottom: 10px;
-        }
-    </style>
-    <script>
-        // let url_num = document.location.href.split("/")[4];
+      $(document).ready(function () {
+          show_inf()
+          show_comment()
+      });
 
-        $(document).ready(function () {
-            show_inf()
-            show_comment()
-        });
+      function show_inf() {
+          $.ajax({
+              type: "GET",
+              url: "/inf",
+              data: {},
+              success: function (response) {
+                  let rows = response['music_inf']
+                  for (let i = 0; i < rows.length; i++) {
+                      let link = rows[i]['link']
+                      let name = rows[i]['name']
+                      let comment = rows[i]['comment']
+                      let star = rows[i]['grade']
 
-        function show_inf(){
-             $.ajax({
-                type: "GET",
-                url: "/inf",
-                data: {},
-                 success: function (response) {
-                    let rows = response['music_inf']
-                     for (let i = 0; i < rows.length; i++) {
-                        let link = rows[i]['link']
-                        let name = rows[i]['name']
-                        let comment = rows[i]['comment']
-                        let star = rows[i]['grade']
+                      let star_image = '⭐'.repeat(star)
 
-                        let star_image = '⭐'.repeat(star)
-
-                     if(url_num === link) {
-                         let temp_html=`<iframe width="560" height="315" src="{link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                      if (url_num === link) {
+                          let temp_html = `<iframe width="560" height="315" src="{link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                         <span><h1>플레이리스트 제목</h1></span>
                                         <hr/>
                                         <span class="writerId"><h5>${name}</h5></span>
                                         <span class="star"><h5>${star_image}</h5></span>
                                         <hr/>
                                         <span><h6>${comment}</h6></span>`
-                         $('#').append(temp_html)
-                     }
-                 }
-                }
-             });
-        }
+                          $('#').append(temp_html)
+                      }
+                  }
+              }
+          });
+      }
 
-        function input_comment() {
+      function input_comment() {
 
-            let comment = $('#comment').val()
+          let comment = $('#comment').val()
 
-            if (comment === '') {
-                alert('댓글 내용을 입력해주세요.')
-            } else {
+          if (comment === '') {
+              alert('댓글 내용을 입력해주세요.')
+          } else {
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/detail',
-                    data: {comment_give: comment},
-                    success: function (response) {
-                        alert(response['msg'])
-                        window.location.reload()
-                    }
-                });
-            }
-        }
+              $.ajax({
+                  type: 'POST',
+                  url: '/detail',
+                  data: {comment_give: comment},
+                  success: function (response) {
+                      alert(response['msg'])
+                      window.location.reload()
+                  }
+              });
+          }
+      }
 
-        function show_comment() {
-            $.ajax({
-                type: "GET",
-                url: "/detail",
-                data: {},
-                success: function (response) {
-                    let rows = response['comment_input']
+      function show_comment() {
+          $.ajax({
+              type: "GET",
+              url: "/detail",
+              data: {},
+              success: function (response) {
+                  let rows = response['smn_list']
 
-                    for (let i = 0; i < rows.length; i++) {
-                        let link = rows[i]['link']
-                        let comment = rows[i]['comment']
+                  for (let i = 0; i < rows.length; i++) {
+                      let comment = rows[i]['comment']
 
-                        if (url_num === link) {
-                            let temp_html = ` <div class="card-body">
-                                                <   h5 class="card-title">{{nickname}}</h5>
-                                                <p class="card-text">${comment}</p>
-                                            </div> `
+                          let temp_html = `
+                                                <h5 class="card-title">{{nickname}}</h5>
+                                                <p class="card-text" id="comment" >${comment}</p>
+                                             `
 
-                            $("#comment_list").append(temp_html)
-                        }
-                    }
-                }
-            });
-        }
-    </script>
+                          $("#card-body").append(temp_html)
+                  }
+              }
+          });
+      }
+  </script>
 </head>
 <body>
 <div class="header">
-    <div class="icon"><!-- 추후 아이콘 들어갈 자리 --></div>
-    <div class="showUser"><span>{id}님 환영합니다!</span></div>
+  <div class="icon"><!-- 추후 아이콘 들어갈 자리 --></div>
+  <div class="showUser"><span>{{nickname}}님 환영합니다!</span></div>
 </div>
 <div class="mytitle">
-    <h1>오노추: 오늘의 노래 추천</h1>
-    <button onClick="location.href='index.html'">이전 페이지</button>
+  <h1>오노추: 오늘의 노래 추천</h1>
+  <button onClick="location.href='index.html'">이전 페이지</button>
 </div>
 <div class="listDetail">
-    <div class="linkInfo">
-        <section class="detailImg">
-            <img src="#" class="thumbnail" alt="">
-        </section>
-        <section class="detailInfo">
-            <span><h1>플레이리스트 제목</h1></span>
-            <hr/>
-            <span class="writerId"><h5>작성자 id</h5></span>
-            <span class="star"><h5>별점</h5></span>
-            <hr/>
-            <span><h6>코멘트</h6></span>
-        </section>
-    </div>
-    <div class="replyInfo">
-        <section class="insertReply">
-            <div class="mb-3">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="이 플레이리스트에 대해 코멘트를 남겨주세요🎵">
-                    <button class="btn btn-outline-secondary" id="writeReply">등록하기</button>
-                </div>
-            </div>
-            <hr/>
-        </section>
-        <section class="readReply">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">닉네임</h5>
-                    <p class="card-text">코멘트</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">닉네임</h5>
-                    <p class="card-text">코멘트</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">닉네임</h5>
-                    <p class="card-text">코멘트</p>
-                </div>
-            </div>
-        </section>
-    </div>
+  <div class="linkInfo">
+    <section class="detailImg">
+      <img src="#" class="thumbnail" alt="">
+    </section>
+    <section class="detailInfo">
+      <span><h1>{{list.title}}</h1></span>
+      <a href="{{list.url}}">음악듣기</a>
+      <hr/>
+      <span class="writerId"><h5>{{nickname}}</h5></span>
+      <span class="star"><h5>{{list.star}}</h5></span>
+      <hr/>
+      <span><h6>{{list.comment}}</h6></span>
+    </section>
+  </div>
+  <div class="replyInfo">
+    <section class="insertReply">
+      <div class="mb-3">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="이 플레이리스트에 대해 코멘트를 남겨주세요🎵">
+          <button onclick="input_comment()" class="btn btn-outline-secondary" id="writeReply">등록하기</button>
+        </div>
+      </div>
+      <hr/>
+    </section>
+    <section class="readReply">
+      <div class="card-body">
+
+        </div>
+    </section>
+  </div>
 </div>
 </body>
 </html>
