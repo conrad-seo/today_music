@@ -46,12 +46,6 @@
             margin: 30px 0px 30px 0px;
         }
 
-        .posting-box > button {
-            width: 100px;
-            margin: 25px auto;
-            display: block;
-        }
-
         .form-group {
             margin: 10px 0;
             clear: both;
@@ -60,10 +54,6 @@
         .form-group > input {
             width: 220px;
             float: left;
-        }
-
-        input::placeholder{
-            font-size: 13px;
         }
 
         .form-group > label {
@@ -154,25 +144,25 @@
     <hr>
     <div class="form-group">
         <label for="userid">아이디</label>
-        <input type="text" id="userid" class="form-control" placeholder="아이디를 입력하세요." required="required">
+        <input type="text" id="userid"  placeholder="아이디를 입력하세요." required="required">
         <button type="button" onclick="check_id()" class="btn btn-outline-light">중복확인</button>
     </div>
     <div class="form-group">
         <label for="userpw">비밀번호</label>
-        <input type="password" id="userpw" class="form-control" placeholder="비밀번호를 입력하세요." required="required">
+        <input type="password" id="userpw" placeholder="비밀번호를 입력하세요." required="required">
     </div>
     <div class="form-group">
         <label for="userpwck">비밀번호확인</label>
-        <input type="password" id="userpwck" class="form-control" placeholder="비밀번호를 재입력하세요." required="required">
+        <input type="password" id="userpwck" placeholder="비밀번호를 재입력하세요." required="required">
     </div>
     <div class="form-group">
         <label for="usernick">닉네임</label>
-        <input type="text" id="usernick" class="form-control" required="required">
+        <input type="text" id="usernick" required="required">
         <button type="button" onclick="check_nick()" class="btn btn-outline-light">중복확인</button>
     </div>
     <div class="form-group">
         <label for="useremail">이메일</label>
-        <input type="text" id="useremail" class="form-control" required="required">
+        <input type="text" id="useremail" required="required">
         <button type="button" onclick="check_email()" class="btn btn-outline-light">중복확인</button>
     </div>
     <div class="btnGrp">
