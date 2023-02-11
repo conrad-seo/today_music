@@ -5,7 +5,6 @@ app = Flask(__name__)
 from pymongo import MongoClient
 import certifi
 ca = certifi.where()
-
 client = MongoClient('mongodb+srv://test:sparta@cluster0.sk4ckqt.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.today_music
 headers = {
@@ -27,21 +26,26 @@ def list_post():
     star_receive = request.form['star_give']
     comment_receive = request.form['comment_give']
     url_receive = request.form['url_give']
+    url = url_receive
 
-    # data = requests.get('url', headers=headers)
-    # soup = BeautifulSoup(data.text, 'html.parser')
-    #
-    # title = soup.select('head > title')
+    data = requests.get(url, headers=headers)
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    title = soup.select_one('meta[property="og:title"]')['content']
+    image = soup.select_one('meta[property="og:image"]')['content']
+
+
 
     doc = {
         'star': star_receive,
         'comment': comment_receive,
         'url': url_receive,
-        # 'title' : title
+        'title' : title,
+        'image' : image
     }
     db.list.insert_one(doc)
 
-    return jsonify({'msg':'저장 완료!'})
+    return jsonify({'title': title})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=False)
+    app.run('0.0.0.0', port=5001, debug=True)
