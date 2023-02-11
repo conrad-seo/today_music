@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <!-- 로그인/회원가입 CSS -->
     <link href="loginCss.css" rel="stylesheet" type="text/css"/>
+    <!-- sweetalert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -96,16 +98,23 @@
         }
 
         function check_id() {
-            $.ajax({
-                type: "POST",
-                url: "/register/check_id",
-                data: {
-                    id_give: $('#userid').val()
-                },
-                success: function (response) {
-                    alert(response['msg'])
-                }
-            })
+            const userId = $('#userid').val()
+            const idCheck = userId.match(/^[a-z0-9]{4,15}$/g)
+            if( userId !== null && idCheck !== null ) {
+                $.ajax({
+                    type: "POST",
+                    url: "/register/check_id",
+                    data: {
+                        id_give: userId
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                    }
+                })
+            }else{
+                swal("ID가 형식에 맞지 않습니다.", "영문자 또는 숫자로 이루어져있는지 확인해주세요.", "error");
+                $('#userid').focus()
+            }
         }
 
         function check_nick() {
@@ -122,16 +131,23 @@
         }
 
         function check_email() {
-            $.ajax({
-                type: "POST",
-                url: "/register/check_email",
-                data: {
-                    email_give: $('#useremail').val()
-                },
-                success: function (response) {
-                    alert(response['msg'])
-                }
-            })
+            const userEmail = $('#useremail').val()
+            const emailCheck = userEmail.match(/[\w\-\.]+\@[\w\-\.]+/g)
+            if( userEmail !== null && emailCheck !== null ){
+                $.ajax({
+                    type: "POST",
+                    url: "/register/check_email",
+                    data: {
+                        email_give: userEmail
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                    }
+                })
+            }else{
+                swal("이메일이 맞지 않습니다.", "형식에 맞게 입력되었는지 확인해주세요.", "error");
+                $('#useremail').focus()
+            }
         }
 
     </script>
@@ -144,7 +160,7 @@
     <hr>
     <div class="form-group">
         <label for="userid">아이디</label>
-        <input type="text" id="userid"  placeholder="아이디를 입력하세요." required="required">
+        <input type="text" id="userid" placeholder="아이디를 입력하세요." required="required">
         <button type="button" onclick="check_id()" class="btn btn-outline-light">중복확인</button>
     </div>
     <div class="form-group">
