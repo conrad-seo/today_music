@@ -10,7 +10,7 @@ ca = certifi.where()
 
 import pymongo
 
-client = pymongo.MongoClient("mongodb+srv://test:sparta@cluster0.sk4ckqt.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://test:sparta@cluster0.sk4ckqt.mongodb.net/?retryWrites=true&w=majority",tlsCAFile=ca)
 db = client.today_music
 
 headers = {
